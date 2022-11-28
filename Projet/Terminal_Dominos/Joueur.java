@@ -31,6 +31,10 @@ public class Joueur {
         return tuileEnMain;
     }
 
+    boolean joueurAUneTuileEnMain(){
+        return getTuileEnMain() != null;
+    }
+
     void afficheJoueur(){
         System.out.printf("- Joueur : %s \n- IA : %b \n- Nombre de points : %d \n",this.nom, this.isIA(), this.getPoints());
     }
@@ -42,8 +46,12 @@ public class Joueur {
         this.tuileEnMain = sac.piocherTuile(i);
     }
 
-    void reposerTuile(Sac sac){
+    void remettreTuileDansLeSac(Sac sac){
         sac.tuileNonJouer(this.tuileEnMain);
+        this.tuileEnMain = null;
+    }
+
+    void poserTuileSurTable(){
         this.tuileEnMain = null;
     }
 
@@ -52,16 +60,4 @@ public class Joueur {
         else System.out.println("Aucune tuile en main");
     }
 
-    public static void main(String[] args) {
-        Joueur a = new Joueur("Amar", false);
-        a.afficheJoueur();
-        Sac sac = new Sac();
-        System.out.println(sac.nombreDeTuilesRestante());
-        a.piocherDansLeSac(sac);
-        a.afficherTuileEnMain();
-        System.out.println(sac.nombreDeTuilesRestante());
-        a.reposerTuile(sac);
-        a.afficherTuileEnMain();
-        System.out.println(sac.nombreDeTuilesRestante());
-    }
 }

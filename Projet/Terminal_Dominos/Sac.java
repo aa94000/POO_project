@@ -48,15 +48,4 @@ public class Sac {
         this.tuiles.add(tuile);
     }
 
-    public static void main(String[] args) {
-       Sac a = new Sac();
-        //a.affichageSac();
-        System.out.println(a.nombreDeTuilesRestante());
-        a.piocherTuile(3);
-        a.piocherTuile(3);
-        System.out.println(a.nombreDeTuilesRestante());
-
-    }
-
-
 }
